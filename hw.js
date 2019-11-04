@@ -40,7 +40,10 @@
 
     // add dropdown menu
     let dropDownGeneration = d3.select("#filter-generation").append("select")
-        .attr("name", "generation");
+        .attr("name", "Generation");
+
+    let dropDownLegendary = d3.select("#filter-legendary").append("select")
+        .attr("name", "Legendary");
 
     // add options to dropdown menu
     var options = dropDownGeneration.selectAll("option")
@@ -48,30 +51,26 @@
         .enter()
         .append("option");
 
-    options.text(function (d) { return d.generation; })
-        .attr("value", function (d) { return d.generation; });
+    options.text(function (d) { return d["Generation"]; })
+        .attr("value", function (d) { return d["Generation"]; });
 
-    let dropDownLegendary = d3.select("#filter-legendary").append("select")
-        .attr("name", "legendary");
-
-    // add options to dropdown menu
     var options = dropDownLegendary.selectAll("option")
         .data(data)
         .enter()
         .append("option");
 
-    options.text(function (d) { return d.legendary; })
-        .attr("value", function (d) { return d.legendary; });
+    options.text(function (d) { return d["Legendary"]; })
+        .attr("value", function (d) { return d["Legendary"]; });
 
     // add filter functionality to dropdown menu
     dropDownGeneration.on("change", function() {
         // remove previous points & tooltip
         svgContainer.selectAll('.point').remove();
-        svgContainer.select(".tooltip").remove();
+        svgContainer.selectAll(".tooltip").remove();
 
         // change filtered data
-        let generation = this.value;
-        filteredData = csvData.filter((row) => row.generation == generation);
+        let gen = this.value;
+        filteredData = csvData.filter((row) => row.generation == gen);
 
         //plot new points
         plotData(mapFunctions);
@@ -80,11 +79,11 @@
     dropDownLegendary.on("change", function() {
       // remove previous points & tooltip
       svgContainer.selectAll('.point').remove();
-      svgContainer.select(".tooltip").remove();
+      svgContainer.selectAll(".tooltip").remove();
 
       // change filtered data
-      let legendary = this.value;
-      filteredData = csvData.filter((row) => row.legendary == legendary);
+      let leg = this.value;
+      filteredData = csvData.filter((row) => row.legendary == leg);
 
       //plot new points
       plotData(mapFunctions);
@@ -130,8 +129,6 @@
     let div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
-
-
 
     // append data to SVG and plot as points
     svgContainer.selectAll('.dot')
