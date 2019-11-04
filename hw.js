@@ -53,8 +53,9 @@
 
     // add filter functionality to dropdown menu
     dropDownGeneration.on("change", function() {
-        // remove previous points
+        // remove previous points & tooltip
         svgContainer.selectAll('.point').remove();
+        svgContainer.select("#tooltip").remove();
 
         // change filtered data
         let generation = this.value;
