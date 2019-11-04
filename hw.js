@@ -51,8 +51,8 @@
         .enter()
         .append("option");
 
-    options.text(function (d) { return d["Generation"]; })
-        .attr("value", function (d) { return d["Generation"]; });
+    options.text(function () { return ["all", 1, 2, 3, 4, 5, 6]; })
+        .attr("value", function () { return ["all", 1, 2, 3, 4, 5, 6]; });
 
     var options = dropDownLegendary.selectAll("option")
         .data(data)
