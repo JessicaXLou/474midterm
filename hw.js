@@ -39,7 +39,7 @@
     makeLabels();
 
     // add dropdown menu
-    let dropDownGeneration = d3.select("#filter").append("select")
+    let dropDownGeneration = d3.select("#filter-generation").append("select")
         .attr("name", "generation");
 
     // add options to dropdown menu
@@ -52,7 +52,7 @@
         .attr("value", function (d) { return d.generation; });
 
     // add filter functionality to dropdown menu
-    dropDown.on("change", function() {
+    dropDownGeneration.on("change", function() {
         // remove previous points
         svgContainer.selectAll('.point').remove();
 
