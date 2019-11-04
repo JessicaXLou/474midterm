@@ -39,11 +39,11 @@
     makeLabels();
 
     // add dropdown menu
-    let dropDown_generation = d3.select("#filter").append("select")
+    let dropDownGeneration = d3.select("#filter").append("select")
         .attr("name", "generation");
 
     // add options to dropdown menu
-    var options = dropDown.selectAll("option")
+    var options = dropDownGeneration.selectAll("option")
         .data(data)
         .enter()
         .append("option");
