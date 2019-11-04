@@ -46,20 +46,23 @@
         .attr("name", "Legendary");
 
     // add options to dropdown menu
-    var options = dropDownGeneration.selectAll("option")
+    var optionsGeneration = dropDownGeneration.selectAll("option")
+        .data(data)
+        .enter()
+        .append("option");
+    
+    var generations = ["all", 1, 2, 3, 4, 5, 6];
+    generations.forEach(function(gen) {
+      optionsGeneration.text(gen)
+          .attr("value", gen);
+    })
+
+    var optionsLegendary = dropDownLegendary.selectAll("option")
         .data(data)
         .enter()
         .append("option");
 
-    options.text(function () { return ["all", 1, 2, 3, 4, 5, 6]; })
-        .attr("value", function () { return ["all", 1, 2, 3, 4, 5, 6]; });
-
-    var options = dropDownLegendary.selectAll("option")
-        .data(data)
-        .enter()
-        .append("option");
-
-    options.text(function (d) { return d["Legendary"]; })
+    optionsLegendary.text(function (d) { return d["Legendary"]; })
         .attr("value", function (d) { return d["Legendary"]; });
 
     // add filter functionality to dropdown menu
