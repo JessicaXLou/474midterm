@@ -30,7 +30,7 @@
     let axesLimits = findMinMax(sp_def_data, total_data);
 
     // draw axes and return scaling + mapping functions
-    let mapFunctions = drawAxes(axesLimits, "fertility_rate", "life_expectancy");
+    let mapFunctions = drawAxes(axesLimits, "Sp. Def", "Total");
 
     // plot data as points and add tooltip functionality
     plotData(mapFunctions);
@@ -99,7 +99,7 @@
     // mapping functions
     let xMap = map.x;
     let yMap = map.y;
-/*
+
     // make tooltip
     let div = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -122,15 +122,15 @@
           div.transition()
             .duration(200)
             .style("opacity", .9);
-          div.html("Country: " + d.location + 
-                    "<br/>" + 
-                    "Population: " + numberWithCommas(d["pop_mlns"]*1000000) + 
-                    "<br/>" + 
-                    "Year: " + d.time + 
-                    "<br/>" + 
-                    "Life Expectancy: " + d["life_expectancy"] + 
-                    "<br/>" + 
-                    "Fertility: " + d["fertility_rate"])
+          let content = "Pokemon: " + d.name + 
+                        "<br/>";
+          if (d["Type 2"] == "") {
+            content.append("Type: " + d["Type 1"])
+          } else {
+            "Type(s): " + d["Type 1"] + 
+            " & " + d["Type 2"];
+          }
+          div.html(content)
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -138,7 +138,7 @@
           div.transition()
             .duration(500)
             .style("opacity", 0);
-        });*/
+        });
   }
 
   // draw the axes and ticks
