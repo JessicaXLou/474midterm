@@ -138,8 +138,8 @@
           div.transition()
             .duration(500)
             .style("opacity", 0);
-        });
-  }*/
+        });*/
+  }
 
   // draw the axes and ticks
   function drawAxes(limits, x, y) {
