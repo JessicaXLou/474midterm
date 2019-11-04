@@ -13,21 +13,21 @@
       .attr('width', 500)
       .attr('height', 500);
     // d3.csv is basically fetch but it can be be passed a csv file as a parameter
-    d3.csv("dataEveryYear.csv")
+    d3.csv("pokemon.csv")
       .then((data) => makeScatterPlot(data));
   }
 
   // make scatter plot with trend line
   function makeScatterPlot(csvData) {
     data = csvData; // assign data as global variable
-    filteredData = csvData.filter((row) => row.time == 1960);
+    filteredData = csvData.filter((row) => row.generation == 1);
 
     // get arrays of fertility rate data and life Expectancy data
-    let fertility_rate_data = data.map((row) => parseFloat(row["fertility_rate"]));
-    let life_expectancy_data = data.map((row) => parseFloat(row["life_expectancy"]));
+    let sp_def_data = data.map((row) => parseFloat(row["Sp. Def"]));
+    let total_data = data.map((row) => parseFloat(row["Total"]));
 
     // find data limits
-    let axesLimits = findMinMax(fertility_rate_data, life_expectancy_data);
+    let axesLimits = findMinMax(sp_def_data, total_data);
 
     // draw axes and return scaling + mapping functions
     let mapFunctions = drawAxes(axesLimits, "fertility_rate", "life_expectancy");
@@ -39,8 +39,8 @@
     makeLabels();
 
     // add dropdown menu
-    let dropDown = d3.select("#filter").append("select")
-        .attr("name", "time");
+    let dropDown_generation = d3.select("#filter").append("select")
+        .attr("name", "generation");
 
     // add options to dropdown menu
     var options = dropDown.selectAll("option")
@@ -48,8 +48,8 @@
         .enter()
         .append("option");
 
-    options.text(function (d) { return d.time; })
-        .attr("value", function (d) { return d.time; });
+    options.text(function (d) { return d.generation; })
+        .attr("value", function (d) { return d.generation; });
 
     // add filter functionality to dropdown menu
     dropDown.on("change", function() {
@@ -57,8 +57,8 @@
         svgContainer.selectAll('.point').remove();
 
         // change filtered data
-        let year = this.value;
-        filteredData = csvData.filter((row) => row.time == year);
+        let generation = this.value;
+        filteredData = csvData.filter((row) => row.generation == generation);
 
         //plot new points
         plotData(mapFunctions);
@@ -71,18 +71,18 @@
       .attr('x', 100)
       .attr('y', 40)
       .style('font-size', '14pt')
-      .text("Life Expectancy vs Fertility Rate");
+      .text("Pokemon: Special Defense vs Total Stats");
 
     svgContainer.append('text')
       .attr('x', 130)
       .attr('y', 490)
       .style('font-size', '10pt')
-      .text('Fertility');
+      .text('Sp. Def');
 
     svgContainer.append('text')
       .attr('transform', 'translate(15, 300)rotate(-90)')
       .style('font-size', '10pt')
-      .text('Life Expectancy');
+      .text('Total');
   }
 
   // plot all the data points on the SVG
@@ -99,7 +99,7 @@
     // mapping functions
     let xMap = map.x;
     let yMap = map.y;
-
+/*
     // make tooltip
     let div = d3.select("body").append("div")
     .attr("class", "tooltip")
@@ -139,7 +139,7 @@
             .duration(500)
             .style("opacity", 0);
         });
-  }
+  }*/
 
   // draw the axes and ticks
   function drawAxes(limits, x, y) {
