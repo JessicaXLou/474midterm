@@ -51,6 +51,18 @@
     options.text(function (d) { return d.generation; })
         .attr("value", function (d) { return d.generation; });
 
+    let dropDownLegendary = d3.select("#filter-legendary").append("select")
+        .attr("name", "legendary");
+
+    // add options to dropdown menu
+    var options = dropDownLegendary.selectAll("option")
+        .data(data)
+        .enter()
+        .append("option");
+
+    options.text(function (d) { return d.legendary; })
+        .attr("value", function (d) { return d.legendary; });
+
     // add filter functionality to dropdown menu
     dropDownGeneration.on("change", function() {
         // remove previous points & tooltip
@@ -64,6 +76,19 @@
         //plot new points
         plotData(mapFunctions);
     });
+
+    dropDownLegendary.on("change", function() {
+      // remove previous points & tooltip
+      svgContainer.selectAll('.point').remove();
+      svgContainer.select(".tooltip").remove();
+
+      // change filtered data
+      let legendary = this.value;
+      filteredData = csvData.filter((row) => row.legendary == legendary);
+
+      //plot new points
+      plotData(mapFunctions);
+  });
   }
 
   // make title and axes labels
