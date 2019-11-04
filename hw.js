@@ -55,7 +55,7 @@
     dropDownGeneration.on("change", function() {
         // remove previous points & tooltip
         svgContainer.selectAll('.point').remove();
-        svgContainer.select("#tooltip").remove();
+        svgContainer.select(".tooltip").remove();
 
         // change filtered data
         let generation = this.value;
