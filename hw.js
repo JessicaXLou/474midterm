@@ -46,17 +46,11 @@
         .attr("name", "Legendary");
 
     // add options to dropdown menu
-    var optionsGeneration = dropDownGeneration.selectAll("option")
-        .data(data)
-        .enter()
-        .append("option");
-    
     var generations = ["all", 1, 2, 3, 4, 5, 6];
-    generations.forEach(function(gen) {
-      optionsGeneration.text(gen)
-          .attr("value", gen);
-    })
 
+    dropDownGeneration.append("option")
+                      .text(generations.forEach(function (gen) { return gen; }));
+    
     var optionsLegendary = dropDownLegendary.selectAll("option")
         .data(data)
         .enter()
