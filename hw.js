@@ -5,6 +5,8 @@
   let data = "no data";
   let filteredData = "no data"
   let svgContainer = ""; // keep SVG reference in global scope
+  let genFilter = "";
+  let lefFilter = "";
 
   // load data and make scatter plot after window loads
   window.onload = function() {
@@ -65,7 +67,7 @@
         svgContainer.selectAll(".tooltip").remove();
 
         // change filtered data
-        let gen = this.value;
+        genFilter = this.value;
         filteredData = csvData.filter((row) => row.generation == gen);
 
         //plot new points
@@ -78,7 +80,7 @@
       svgContainer.selectAll(".tooltip").remove();
 
       // change filtered data
-      let leg = this.value;
+      legFilter = this.value;
       filteredData = csvData.filter((row) => row.legendary == leg);
 
       //plot new points
@@ -110,7 +112,7 @@
   // and add tooltip functionality
   function plotData(map) {
     // get population data as array
-    let pop_data = filteredData.map((row) => +row["pop_mlns"]);
+    let pop_data = filteredData.map((row) => +row["Name"]);
     let pop_limits = d3.extent(pop_data);
     // make size scaling function for population
     let pop_map_func = d3.scaleLinear()
@@ -134,7 +136,7 @@
         .attr('class', 'point')
         .attr('cx', xMap)
         .attr('cy', yMap)
-        .attr('r', (d) => pop_map_func(d["pop_mlns"]))
+        .attr('r', 5)
         .attr('fill', "#4286f4")
         // add tooltip functionality to points
         .on("mouseover", (d) => {
