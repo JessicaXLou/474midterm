@@ -146,10 +146,10 @@
           let content = "Pokemon: " + d["Name"] + 
                         "<br/>";
           if (d["Type 2"] == "") {
-            content.append("Type: " + d["Type 1"])
+            content += "Type: " + d["Type 1"];
           } else {
-            "Type(s): " + d["Type 1"] + 
-            " & " + d["Type 2"];
+            content += "Type(s): " + d["Type 1"] + 
+                        " & " + d["Type 2"];
           }
           div.html(content)
             .style("left", (d3.event.pageX) + "px")
