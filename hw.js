@@ -71,7 +71,7 @@
       dropDownGeneration.append('option').text(gen);
     })
     
-    var legendaries = ["all", true, false];
+    var legendaries = ["all", "True", "False"];
 
     legendaries.forEach( function(leg) {
       dropDownLegendary.append('option').text(leg);
@@ -79,16 +79,24 @@
 
     // add filter functionality to dropdown menu
     dropDownGeneration.on("change", function() {
-        // remove previous points & tooltip
-        svgContainer.selectAll('.point').remove();
-        svgContainer.selectAll(".tooltip").remove();
+      // remove previous points & tooltip
+      svgContainer.selectAll('.point').remove();
+      svgContainer.selectAll(".tooltip").remove();
 
-        // change filtered data
-        genFilter = this.value;
-        filteredData = csvData.filter((row) => row.generation == genFilter && row.legendary == legFilter);
-
-        //plot new points
-        plotData(mapFunctions);
+      // change filtered data
+      genFilter = this.value; 
+      if (genFilter.equals(legFilter)) { // both have all selected
+        filteredData = csvData;
+      } else if (genFilter.equals("all")) { // generation has all selected
+        filteredData = csvData.filter((row) => row["Legendary"].equals(legFilter));
+      } else if (legFilter.equals("all")) { // legendary has all selected
+        filteredData = csvData.filter((row) => row["Generation"].equals(genFilter));
+      } else { // neither have all selected
+        filteredData = csvData.filter((row) => (row["Generation"].equals(genFilter) && row["Legendary"].equals(legFilter)));
+      }
+      
+      //plot new points
+      plotData(mapFunctions);
     });
 
     dropDownLegendary.on("change", function() {
@@ -98,7 +106,15 @@
 
       // change filtered data
       legFilter = this.value;
-      filteredData = csvData.filter((row) => row.generation == genFilter && row.legendary == legFilter);
+      if (genFilter.equals(legFilter)) {
+        filteredData = csvData;
+      } else if (genFilter.equals("all")) {
+        filteredData = csvData.filter((row) => row["Legendary"].equals(legFilter));
+      } else if (legFilter.equals("all")) {
+        filteredData = csvData.filter((row) => row["Generation"].equals(genFilter));
+      } else {
+        filteredData = csvData.filter((row) => (row["Generation"].equals(genFilter) && row["Legendary"].equals(legFilter)));
+      }
 
       //plot new points
       plotData(mapFunctions);
