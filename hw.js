@@ -68,7 +68,7 @@
 
         // change filtered data
         genFilter = this.value;
-        filteredData = csvData.filter((row) => row.generation == gen);
+        filteredData = csvData.filter((row) => row.generation == genFilter && row.legendary == legFilter);
 
         //plot new points
         plotData(mapFunctions);
@@ -81,7 +81,7 @@
 
       // change filtered data
       legFilter = this.value;
-      filteredData = csvData.filter((row) => row.legendary == leg);
+      filteredData = csvData.filter((row) => row.generation == genFilter && row.legendary == legFilter);
 
       //plot new points
       plotData(mapFunctions);
@@ -148,7 +148,7 @@
           if (d["Type 2"] == "") {
             content += "Type: " + d["Type 1"];
           } else {
-            content += "Type(s): " + d["Type 1"] + 
+            content += "Types: " + d["Type 1"] + 
                         " & " + d["Type 2"];
           }
           div.html(content)
