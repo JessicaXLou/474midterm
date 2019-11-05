@@ -170,7 +170,7 @@
         .attr('cx', xMap)
         .attr('cy', yMap)
         .attr('r', 5)
-        .attr('fill', "#4286f4")
+        .attr('fill', colors.get(d["Type 1"]))
         // add tooltip functionality to points
         .on("mouseover", (d) => {
           div.transition()
