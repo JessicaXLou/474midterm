@@ -5,8 +5,8 @@
   let data = "no data";
   let filteredData = "no data"
   let svgContainer = ""; // keep SVG reference in global scope
-  let genFilter = "";
-  let legFilter = "";
+  let genFilter = "all";
+  let legFilter = "all";
   const colors = {
     "Bug": "#4E79A7",
     "Dark": "#A0CBE8",
