@@ -6,7 +6,24 @@
   let filteredData = "no data"
   let svgContainer = ""; // keep SVG reference in global scope
   let genFilter = "";
-  let lefFilter = "";
+  let legFilter = "";
+  const colors = {
+    "Bug": "#4E79A7",
+    "Dark": "#A0CBE8",
+    "Electric": "#F28E2B",
+    "Fairy": "#FFBE&D",
+    "Fighting": "#59A14F",
+    "Fire": "#8CD17D",
+    "Ghost": "#B6992D",
+    "Grass": "#499894",
+    "Ground": "#86BCB6",
+    "Ice": "#86BCB6",
+    "Normal": "#E15759",
+    "Poison": "#FF9D9A",
+    "Psychic": "#79706E",
+    "Steel": "#BAB0AC",
+    "Water": "#D37295"
+  }
 
   // load data and make scatter plot after window loads
   window.onload = function() {
