@@ -52,13 +52,11 @@
       dropDownGeneration.append('option').text(gen);
     })
     
-    var optionsLegendary = dropDownLegendary.selectAll("option")
-        .data(data)
-        .enter()
-        .append("option");
+    var legendaries = ["all", true, false];
 
-    optionsLegendary.text(function (d) { return d["Legendary"]; })
-        .attr("value", function (d) { return d["Legendary"]; });
+    legendaries.forEach( function(leg) {
+      dropDownLegendary.append('option').text(leg);
+    })
 
     // add filter functionality to dropdown menu
     dropDownGeneration.on("change", function() {
