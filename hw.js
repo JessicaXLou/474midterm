@@ -85,14 +85,14 @@
 
       // change filtered data
       genFilter = this.value; 
-      if (genFilter.equals(legFilter)) { // both have all selected
+      if (genFilter == legFilter) { // both have all selected
         filteredData = csvData;
-      } else if (genFilter.equals("all")) { // generation has all selected
-        filteredData = csvData.filter((row) => row["Legendary"].equals(legFilter));
-      } else if (legFilter.equals("all")) { // legendary has all selected
-        filteredData = csvData.filter((row) => row["Generation"].equals(genFilter));
+      } else if (genFilter == "all") { // generation has all selected
+        filteredData = csvData.filter((row) => row["Legendary"] == legFilter);
+      } else if (legFilter == "all") { // legendary has all selected
+        filteredData = csvData.filter((row) => row["Generation"] == genFilter);
       } else { // neither have all selected
-        filteredData = csvData.filter((row) => (row["Generation"].equals(genFilter) && row["Legendary"].equals(legFilter)));
+        filteredData = csvData.filter((row) => (row["Generation"] == genFilter && row["Legendary"] == legFilter));
       }
       
       //plot new points
@@ -106,14 +106,14 @@
 
       // change filtered data
       legFilter = this.value;
-      if (genFilter.equals(legFilter)) {
+      if (genFilter == legFilter) { // both have all selected
         filteredData = csvData;
-      } else if (genFilter.equals("all")) {
-        filteredData = csvData.filter((row) => row["Legendary"].equals(legFilter));
-      } else if (legFilter.equals("all")) {
-        filteredData = csvData.filter((row) => row["Generation"].equals(genFilter));
-      } else {
-        filteredData = csvData.filter((row) => (row["Generation"].equals(genFilter) && row["Legendary"].equals(legFilter)));
+      } else if (genFilter == "all") { // generation has all selected
+        filteredData = csvData.filter((row) => row["Legendary"] == legFilter);
+      } else if (legFilter == "all") { // legendary has all selected
+        filteredData = csvData.filter((row) => row["Generation"] == genFilter);
+      } else { // neither have all selected
+        filteredData = csvData.filter((row) => (row["Generation"] == genFilter && row["Legendary"] == legFilter));
       }
 
       //plot new points
