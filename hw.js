@@ -48,8 +48,9 @@
     // add options to dropdown menu
     var generations = ["all", 1, 2, 3, 4, 5, 6];
 
-    dropDownGeneration.append("option")
-                      .text(generations.forEach(function (gen) { return gen; }));
+    generations.forEach( function(gen) {
+      dropDownGeneration.append('option').text(gen);
+    })
     
     var optionsLegendary = dropDownLegendary.selectAll("option")
         .data(data)
