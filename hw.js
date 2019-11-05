@@ -143,7 +143,7 @@
           div.transition()
             .duration(200)
             .style("opacity", .9);
-          let content = "Pokemon: " + d.name + 
+          let content = "Pokemon: " + d["Name"] + 
                         "<br/>";
           if (d["Type 2"] == "") {
             content.append("Type: " + d["Type 1"])
