@@ -20,7 +20,7 @@
   // make scatter plot with trend line
   function makeScatterPlot(csvData) {
     data = csvData; // assign data as global variable
-    filteredData = csvData.filter((row) => row.generation == 1);
+    filteredData = csvData;
 
     // get arrays of fertility rate data and life Expectancy data
     let sp_def_data = data.map((row) => parseFloat(row["Sp. Def"]));
