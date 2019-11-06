@@ -124,7 +124,7 @@
 
     // add legend
     // add dots
-    let legend = d3.select("#legend")
+    let legend = d3.select("#legend").append("div")
       .data(Object.values(colors))
       .enter()
       .append("circle")
