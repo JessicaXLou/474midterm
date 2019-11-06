@@ -145,6 +145,7 @@
           .text(type)
           .attr("text-anchor", "left")
           .style("alignment-baseline", "middle");
+      d3.select("#legend").append("br");
       i++;
     })
   }
