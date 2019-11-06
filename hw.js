@@ -140,7 +140,6 @@
       .append("text")
         .attr("x", 120)
         .attr("y", function(d,i){ return 100 + i*25})
-        .style("fill", function(d){ return color(d)})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
