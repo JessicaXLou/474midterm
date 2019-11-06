@@ -131,20 +131,22 @@
           .attr("cx", 100)
           .attr("cy", (i*25))
           .attr("r", 7)
-          .style("fill", (d) => { return d });
+          .style("fill", color);
       i++;
     })
 
     // add labels
     i = 0;
-    svgContainer.data(Object.keys(colors))
-      .enter()
-      .append("text")
-        .attr("x", 120)
-        .attr("y", (d,i) => ( 600 + i*25 ))
-        .text(function(d){ return d})
-        .attr("text-anchor", "left")
-        .style("alignment-baseline", "middle")
+    Object.keys(colors).forEach( function(type) {
+      d3.select("#legend")
+        .append("text")
+          .attr("x", 120)
+          .attr("y", (d,i) => ( i*25 ))
+          .text(type)
+          .attr("text-anchor", "left")
+          .style("alignment-baseline", "middle");
+      i++;
+    })
   }
 
   // make title and axes labels
