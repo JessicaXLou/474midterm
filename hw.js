@@ -124,7 +124,7 @@
 
     // add legend
     // add dots
-    svgContainer.selectAll("mydots")
+    svgContainer.select("body")
       .data(colors)
       .enter()
       .append("circle")
@@ -134,7 +134,7 @@
         .style("fill", (d) => { return d });
 
     // add labels
-    svgContainer.selectAll("mylabels")
+    svgContainer.select("body")
       .data(keys)
       .enter()
       .append("text")
