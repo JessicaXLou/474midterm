@@ -10,6 +10,7 @@
   const colors = {
     "Bug": "#4E79A7",
     "Dark": "#A0CBE8",
+    "Dragon": "#FBFF00",
     "Electric": "#F28E2B",
     "Fairy": "#FFBE&D",
     "Fighting": "#59A14F",
@@ -21,6 +22,7 @@
     "Normal": "#E15759",
     "Poison": "#FF9D9A",
     "Psychic": "#79706E",
+    "Rock": "#460095",
     "Steel": "#BAB0AC",
     "Water": "#D37295"
   }
