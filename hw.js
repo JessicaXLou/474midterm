@@ -124,14 +124,14 @@
 
     // add legend
     // add dots
-    d3.select("body")
+    /*d3.select("body")
       .data(colors)
       .enter()
       .append("circle")
         .attr("cx", 100)
         .attr("cy", (d,i) => { return 100 + i*25 })
         .attr("r", 7)
-        .style("fill", (d) => { return d });
+        .style("fill", (d) => { return d });*/
 
     // add labels
     d3.select("body")
