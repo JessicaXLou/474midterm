@@ -97,7 +97,7 @@
         filteredData = csvData.filter((row) => (row["Generation"] == genFilter && row["Legendary"] == legFilter));
       }
       
-      //plot new points
+      // plot new points
       plotData(mapFunctions);
     });
 
@@ -120,7 +120,17 @@
 
       //plot new points
       plotData(mapFunctions);
-  });
+    });
+
+    // add legend
+    svgContainer.selectAll("mydots")
+      .data(keys)
+      .enter()
+      .append("circle")
+        .attr("cx", 100)
+        .attr("cy", function(d,i){ return 100 + i*25})
+        .attr("r", 7)
+        .style("fill", function(d){ return color(d)})
   }
 
   // make title and axes labels
