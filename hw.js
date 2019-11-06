@@ -124,7 +124,8 @@
 
     // add legend
     // add dots
-    svgContainer.data(colors)
+    let legend = d3.select("#legend")
+      .data(Object.values(colors))
       .enter()
       .append("circle")
         .attr("cx", 100)
