@@ -128,7 +128,7 @@
       .enter()
       .append("circle")
         .attr("cx", 100)
-        .attr("cy", (d,i) => { return 600 + i*25 })
+        .attr("cy", (d,i) => ( 600 + i*25 ))
         .attr("r", 7)
         .style("fill", (d) => { return d });
 
@@ -137,7 +137,7 @@
       .enter()
       .append("text")
         .attr("x", 120)
-        .attr("y", function(d,i){ return 600 + i*25})
+        .attr("y", (d,i) => ( 600 + i*25 ))
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
