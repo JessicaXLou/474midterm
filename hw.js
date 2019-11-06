@@ -124,7 +124,7 @@
 
     // add legend
     svgContainer.selectAll("mydots")
-      .data(keys)
+      .data(colors.keys())
       .enter()
       .append("circle")
         .attr("cx", 100)
