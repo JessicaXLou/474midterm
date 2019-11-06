@@ -132,7 +132,7 @@
     let i = 0;
     Object.values(colors).forEach( function(color) {
       legend.append("circle")
-          .attr("cx", 0)
+          .attr("cx", 10)
           .attr("cy", (i*25))
           .attr("r", 7)
           .style("fill", color);
@@ -144,7 +144,7 @@
     Object.keys(colors).forEach( function(type) {
       legend.append("text")
           .attr("x", 20)
-          .attr("y", (d,i) => ( i*25 ))
+          .attr("y", i*25)
           .text(type)
           .attr("text-anchor", "left")
           .style("alignment-baseline", "middle");
