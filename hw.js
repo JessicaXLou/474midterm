@@ -32,7 +32,7 @@
     svgContainer = d3.select('body')
       .append('svg')
       .attr('width', 500)
-      .attr('height', 500);
+      .attr('height', 700);
     // d3.csv is basically fetch but it can be be passed a csv file as a parameter
     d3.csv("pokemon.csv")
       .then((data) => makeScatterPlot(data));
@@ -124,22 +124,22 @@
 
     // add legend
     // add dots
-    /*d3.select("body")
+    d3.select("svg")
       .data(colors)
       .enter()
       .append("circle")
         .attr("cx", 100)
-        .attr("cy", (d,i) => { return 100 + i*25 })
+        .attr("cy", (d,i) => { return 600 + i*25 })
         .attr("r", 7)
-        .style("fill", (d) => { return d });*/
+        .style("fill", (d) => { return d });
 
     // add labels
-    d3.select("body")
+    d3.select("svg")
       .data(Object.keys(colors))
       .enter()
       .append("text")
         .attr("x", 120)
-        .attr("y", function(d,i){ return 100 + i*25})
+        .attr("y", function(d,i){ return 600 + i*25})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
