@@ -124,16 +124,19 @@
 
     // add legend
     // add dots
-    let legend = d3.select("#legend").append("div")
-      .data(Object.values(colors))
-      .enter()
-      .append("circle")
-        .attr("cx", 100)
-        .attr("cy", (d,i) => ( 600 + i*25 ))
-        .attr("r", 7)
-        .style("fill", (d) => { return d });
+    let i = 0;
+    Object.values(colors).forEach( function(color) {
+      d3.select("#legend")
+        .append("circle")
+          .attr("cx", 100)
+          .attr("cy", (i*25))
+          .attr("r", 7)
+          .style("fill", (d) => { return d });
+      i++;
+    })
 
     // add labels
+    i = 0;
     svgContainer.data(Object.keys(colors))
       .enter()
       .append("text")
