@@ -123,14 +123,27 @@
     });
 
     // add legend
+    // add dots
     svgContainer.selectAll("mydots")
-      .data(colors.keys())
+      .data(colors)
       .enter()
       .append("circle")
         .attr("cx", 100)
-        .attr("cy", function(d,i){ return 100 + i*25})
+        .attr("cy", (d,i) => { return 100 + i*25 })
         .attr("r", 7)
+        .style("fill", (d) => { return d });
+
+    // add labels
+    svgContainer.selectAll("mylabels")
+      .data(keys)
+      .enter()
+      .append("text")
+        .attr("x", 120)
+        .attr("y", function(d,i){ return 100 + i*25})
         .style("fill", function(d){ return color(d)})
+        .text(function(d){ return d})
+        .attr("text-anchor", "left")
+        .style("alignment-baseline", "middle")
   }
 
   // make title and axes labels
