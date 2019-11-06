@@ -124,7 +124,7 @@
 
     // add legend
     // add dots
-    svgContainer.select("body")
+    d3.select("body")
       .data(colors)
       .enter()
       .append("circle")
@@ -134,7 +134,7 @@
         .style("fill", (d) => { return d });
 
     // add labels
-    svgContainer.select("body")
+    d3.select("body")
       .data(Object.keys(colors))
       .enter()
       .append("text")
