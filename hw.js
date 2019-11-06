@@ -124,10 +124,14 @@
 
     // add legend
     // add dots
+    let legend = d3.select("#legend")
+      .append("svg")
+      .attr('width', 500)
+      .attr('height', 200);
+
     let i = 0;
     Object.values(colors).forEach( function(color) {
-      d3.select("#legend")
-        .append("circle")
+      legend.append("circle")
           .attr("cx", 100)
           .attr("cy", (i*25))
           .attr("r", 7)
@@ -138,8 +142,7 @@
     // add labels
     i = 0;
     Object.keys(colors).forEach( function(type) {
-      d3.select("#legend")
-        .append("text")
+      legend.append("text")
           .attr("x", 120)
           .attr("y", (d,i) => ( i*25 ))
           .text(type)
