@@ -135,7 +135,7 @@
 
     // add labels
     svgContainer.select("body")
-      .data(keys)
+      .data(Object.keys(colors))
       .enter()
       .append("text")
         .attr("x", 120)
