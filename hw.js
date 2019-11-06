@@ -124,8 +124,7 @@
 
     // add legend
     // add dots
-    d3.select("svg")
-      .data(colors)
+    svgContainer.data(colors)
       .enter()
       .append("circle")
         .attr("cx", 100)
@@ -134,8 +133,7 @@
         .style("fill", (d) => { return d });
 
     // add labels
-    d3.select("svg")
-      .data(Object.keys(colors))
+    svgContainer.data(Object.keys(colors))
       .enter()
       .append("text")
         .attr("x", 120)
